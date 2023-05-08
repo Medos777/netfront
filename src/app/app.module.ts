@@ -22,6 +22,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ToastrModule} from "ngx-toastr";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import { CategorieFilterPipePipe } from './categorie-filter-pipe.pipe';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CategorieFilterPipePipe } from './categorie-filter-pipe.pipe';
     ListloisirComponent,
     ListCategorieComponent,
     AddCategorieComponent,
-    CategorieFilterPipePipe
+    CategorieFilterPipePipe,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
