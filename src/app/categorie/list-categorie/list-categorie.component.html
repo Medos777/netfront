@@ -5,7 +5,7 @@
 
 <div class="row">
   <button mat-raised-button color="primary" style="background-color: green; color: white;" (click)="addLoisir()">
-    <mat-icon>add</mat-icon> Create New Loisir
+    <mat-icon>add</mat-icon> Create New categorie
   </button>
 </div>
 <br><br>
@@ -19,7 +19,7 @@
     </mat-form-field>
   </div>
 
-  <table mat-table [dataSource]="crudApi.list" class="mat-elevation-z8">
+  <table mat-table [dataSource]="crudApi.list| categorieFilterPipe:searchText" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
