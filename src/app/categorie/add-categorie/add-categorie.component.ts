@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {Categorie} from "../../Model/categorie";
 import {CategorieService} from "../../Service/categorie.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, NgForm, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
@@ -13,6 +13,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 })
 export class AddCategorieComponent {
   submitted=false;
+  newCategoryName: string = '';
   constructor(public crudApi: CategorieService ,public fb: FormBuilder,public toastr: ToastrService,
               private router : Router,@Inject(MAT_DIALOG_DATA)  public data:any,
               public dialogRef:MatDialogRef<AddCategorieComponent>,
@@ -58,7 +59,7 @@ export class AddCategorieComponent {
 
     if (this.crudApi.choixmenu == "A")
     {
-      this.addData();
+      //this.addCategory(form: NgForm);
     }
     else
     {
@@ -67,23 +68,40 @@ console.log("in the future  update");
     }
 
   }
+  addCategory(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
 
+    const categorie: Categorie = {
+      id: 0, // The server will generate the ID
+      nom: form.value.nom
+    };
 
+    this.crudApi.addCategory(categorie).subscribe( data => {
+       this.dialogRef.close();
 
-  addData() {
-    let mod:String=this.crudApi.dataForm.value.libelle;
-    this.crudApi.createData(this.crudApi.dataForm.value).
-    subscribe( data => {
-      this.dialogRef.close();
-
-      this.crudApi.getAll().subscribe(
-        response =>{this.crudApi.list = response;}
-      );
-      this.router.navigate(['/loisirs']);
-    });
-
-
+          this.crudApi.getAll().subscribe(
+           response =>{this.crudApi.list = response;}
+          );
+           this.router.navigate(['/categories']);
+        });
   }
+
+  // addData() {
+  //   let mod:String=this.crudApi.dataForm.value.name;
+  //   this.crudApi.createData(this.crudApi.dataForm.value).
+  //   subscribe( data => {
+  //     this.dialogRef.close();
+  //
+  //     this.crudApi.getAll().subscribe(
+  //       response =>{this.crudApi.list = response;}
+  //     );
+  //     this.router.navigate(['/loisirs']);
+  //   });
+  //
+  //
+  // }
 
 
 }

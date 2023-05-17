@@ -14,9 +14,9 @@ export class CategorieFilterPipePipe implements PipeTransform {
     if (!searchText) {
       return categories;
     }
-    searchText = searchText.toLowerCase();
+    searchText = searchText.toUpperCase();
     return categories.filter(categorie => {
-      return categorie.nom.toLowerCase().includes(searchText);
+      return categorie.nom.toUpperCase().includes(searchText);
     });
   }
 

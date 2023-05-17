@@ -11,23 +11,35 @@ import {User} from "../../Model/user";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user: User= new User(0,"","");
+  loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  onSubmit() {
-    this.authService.login(this.user).subscribe(
-      (response) => {
+  login(): void {
+    if (this.loginForm.invalid) {
+      return;
+    }
 
-        console.log("succee");
-       // this.router.navigate(['/dashboard']);
+    const user: User = {
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password,
+      role: ''
+    };
+
+    this.authService.login(user).subscribe(
+      () => {
+        // Login successful
+        // Perform any necessary actions
       },
       (error) => {
-        // Login failed, display error message
-        console.error(error);
+        console.error('Login error:', error);
+        // Handle login error
       }
     );
   }
-
 }

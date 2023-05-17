@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="register-page">
+  <div class="register-card">
+    <h2 class="register-title">Create an Account</h2>
+
+    <form class="register-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email Address</mat-label>
+        <input matInput type="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+
+      <mat-checkbox class="terms-checkbox">I agree to the Terms of Service</mat-checkbox>
+
+      <button mat-raised-button color="primary">Sign Up</button>
+    </form>
+
+    <p class="login-link">
+      Already have an account? <a routerLink ="/login" routerLinkActive="active" title="login">Log in</a>
+    </p>
+  </div>
+</div>

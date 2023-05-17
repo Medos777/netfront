@@ -45,18 +45,18 @@ export class ListCategorieComponent implements OnInit{
     dialogConfig.height="50%";
     this.matDialog.open(AddCategorieComponent, dialogConfig);
   }
-  removeData(id: number) {
-    if (window.confirm('Are sure you want to delete this  ?')) {
-      this.crudApi.deleteData(id)
-        .subscribe(
-          data => {
-            console.log(data);
-            this.toastr.warning(' categorie deleted!',);
-            this.getData();
-          },
-          error => console.log(error));
-    }
+  deleteCategory(id: number) {
+    this.crudApi.deleteCategory(id).subscribe(
+      () => {
+        // Category deleted successfully
+        this.getData(); // Refresh the list after deletion
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
+
   selectData(item : Categorie) {
     this.crudApi.choixmenu = "M";
     this.crudApi.dataForm = this.fb.group(Object.assign({},item));

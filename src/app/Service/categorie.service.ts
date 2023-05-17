@@ -20,11 +20,11 @@ export class CategorieService {
 
     return this.http.get(`${this.baseUrl}`);
   }
-  deleteData(id: number): Observable<any> {
-
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  deleteCategory(id: number): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
-  createData(info: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, info);
+  addCategory(categorie: Categorie): Observable<Categorie> {
+    return this.http.post<Categorie>(this.baseUrl, categorie);
   }
 }

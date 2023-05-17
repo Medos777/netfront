@@ -1,26 +1,32 @@
-<div class="col-md-12 col-md-offset-2">
-  <h1>Loisir</h1>
-  <form [formGroup]="this.crudApi.dataForm" (ngSubmit)="onSubmit()">
-    <input type="hidden"  formControlName="id" id="id">
-    <div class="form-group">
-      <label>nom </label>
-      <input type="text" formControlName="nom" class="form-control"/>
-      <div *ngIf="submitted " class="invalid-feedback">
-        <div>code doit etre au minimum 3 caractères</div>
-      </div>
-    </div>
+<!--<div class="col-md-12 col-md-offset-2">-->
+<!--  <h1>Loisir</h1>-->
+<!--  <form [formGroup]="this.crudApi.dataForm" (ngSubmit)="onSubmit()">-->
+<!--    <input type="hidden"  formControlName="id" id="id">-->
+<!--    <div class="form-group">-->
+<!--      <label>nom </label>-->
+<!--      <input type="text" formControlName="nom" class="form-control"/>-->
+<!--      <div *ngIf="submitted " class="invalid-feedback">-->
+<!--        <div>code doit etre au minimum 3 caractères</div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+
+<!--      <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>-->
+<!--      <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>-->
 
 
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
+<h2>Add Category</h2>
+<form (ngSubmit)="addCategory(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="nom">Category Name:</label>
+    <input type="text" id="nom" name="nom" ngModel required>
+  </div>
+<!--  <button type="submit" >Add</button>-->
+  <button type="submit" class="btn btn-dark"[disabled]="form.invalid" ><i class="fa fa-database"></i> Ajout </button>
+  <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
 
+</form>
 
-
-
-    <div class="form-group">
-
-      <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
-      <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
-
-
-    </div>
-  </form>
-</div>

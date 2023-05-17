@@ -23,6 +23,14 @@ import {ToastrModule} from "ngx-toastr";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import { CategorieFilterPipePipe } from './categorie-filter-pipe.pipe';
 import { MenuComponent } from './menu/menu.component';
+import { AddLoisirComponent } from './Loisir/add-loisir/add-loisir.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import { AddStadeComponent } from './stade/add-stade/add-stade.component';
+import { ListStadeComponent } from './stade/list-stade/list-stade.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -33,26 +41,34 @@ import { MenuComponent } from './menu/menu.component';
     ListCategorieComponent,
     AddCategorieComponent,
     CategorieFilterPipePipe,
-    MenuComponent
+    MenuComponent,
+    AddLoisirComponent,
+    AddStadeComponent,
+    ListStadeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatDividerModule,
-    NgxPaginationModule,
-    ToastrModule.forRoot(),
-    MatDialogModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        MatDividerModule,
+        NgxPaginationModule,
+        ToastrModule.forRoot(),
+        MatDialogModule,
+        FormsModule,
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatCheckboxModule
+    ],
   providers: [ { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent]
