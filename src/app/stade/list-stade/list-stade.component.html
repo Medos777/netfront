@@ -1,0 +1,58 @@
+<div class="row">
+  <h1><mat-icon>stades</mat-icon> Liste des stades</h1>
+</div>
+<br>
+
+<div class="row">
+  <button mat-raised-button color="primary" style="background-color: green; color: white;" (click)="addLoisir()">
+    <mat-icon>add</mat-icon> Create New stade
+  </button>
+</div>
+<br><br>
+
+<div class="row">
+  <div class="search-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="searchText" placeholder="Search">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="crudApi.list" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let item">{{ item.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef>Label</th>
+      <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="emplacement">
+      <th mat-header-cell *matHeaderCellDef>emplacement</th>
+      <td mat-cell *matCellDef="let item">{{ item.emplacement }}</td>
+    </ng-container>
+    <ng-container matColumnDef="available">
+      <th mat-header-cell *matHeaderCellDef>available</th>
+      <td mat-cell *matCellDef="let item">{{ item.available }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-icon-button color="warn" style="background-color: green; color: white;" (click)="selectData(item)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'nom' ,'emplacement','available','action']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'nom', 'emplacement','available','action']"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator>
+</div>
+

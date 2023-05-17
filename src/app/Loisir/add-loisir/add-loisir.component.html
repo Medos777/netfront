@@ -1,0 +1,30 @@
+<h2>Add Loisir</h2>
+
+<form [formGroup]="loisirForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Categorie</mat-label>
+      <mat-select formControlName="categorieId" required>
+        <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
+          {{ categorie.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="submit" [disabled]="loisirForm.invalid">
+      <mat-icon>add</mat-icon> Ajout
+    </button>
+    <button mat-raised-button color="warn" type="button" [mat-dialog-close]>
+      <mat-icon>close</mat-icon> Close
+    </button>
+  </div>
+</form>

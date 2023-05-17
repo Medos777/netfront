@@ -1,0 +1,26 @@
+<h2>Add Stade</h2>
+
+<form [formGroup]="loisirForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Emplacement</mat-label>
+    <input matInput formControlName="emplacement">
+  </mat-form-field>
+
+  Available<mat-checkbox formControlName="available"></mat-checkbox>
+
+  <mat-form-field>
+    <mat-label>Loisir:</mat-label>
+    <mat-select formControlName="categorieId" required>
+      <mat-option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.nom }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+<div>
+  <button mat-raised-button color="primary" [disabled]="loisirForm.invalid"><mat-icon>add</mat-icon> Ajout</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]>Close</button>
+</div>
+</form>
